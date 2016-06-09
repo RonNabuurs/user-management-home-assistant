@@ -1,0 +1,10 @@
+lol:
+  groups: []
+  users: []
+my_group:
+  groups:
+  - Group2
+  users:
+  - User1
+  - User2
+  - newer_simon
