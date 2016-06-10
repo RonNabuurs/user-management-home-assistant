@@ -80,7 +80,7 @@ class UserManager:
                 return self.convert_dict_to_users(user_dict)
         return []
 
-    def delete_user(self, username):
+    def delete_user(self, username, groupmanager):
         """
         Deletes users from users.yaml file.
         :return: Returns true if the operation was successful and false if
@@ -90,6 +90,9 @@ class UserManager:
             if user.get_username() == username:
                 self.users.remove(user)
                 self.write_users_to_yaml()
+                for usergroup in groupmanager.user_groups:
+                    groupmanager.remove_user_from_usergroup(username,
+                                                            usergroup)
                 return True
         return False
 

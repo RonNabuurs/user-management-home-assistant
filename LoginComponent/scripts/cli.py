@@ -528,13 +528,14 @@ def delete_user(username):
     :param username: The username of the user you'd like to delete.
     """
     usermanager = UserManager()
+    groupmanager = UserGroupManager()
 
     if username is None:
         username = select_user_from_list(usermanager)
 
     if click.confirm("Are you sure you want to delete the user "
                      "with username: " + username):
-        if usermanager.delete_user(username):
+        if usermanager.delete_user(username, groupmanager):
             click.secho("Successfully deleted user with username: " +
                         username, fg="green", bold=True)
 
